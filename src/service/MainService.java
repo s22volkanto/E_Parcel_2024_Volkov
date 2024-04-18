@@ -1,8 +1,6 @@
 package service;
 
 import model.*;
-import model.City;
-import model.ParcelSize;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
