@@ -319,4 +319,77 @@ public class MainService {
         }
         return null;
     }
+
+        // Testing
+    private void run() {
+        // Create drivers
+        Driver driver1 = new Driver("John", "Doe", "ABC123", 3.5f);
+        Driver driver2 = new Driver("Alice", "Smith", "DEF456", 2.0f);
+        Driver driver3 = new Driver("Michael", "Johnson", "DEF789", 2.5f);
+        Driver driver4 = new Driver("Emily", "Brown", "GHI012", 4.0f);
+        allDrivers.add(driver1);
+        allDrivers.add(driver2);
+        allDrivers.add(driver3);
+        allDrivers.add(driver4);
+
+        // Create addresses
+        Address address1 = new Address(City.RIGA, "Main Street", 123);
+        Address address2 = new Address(City.VENTSPILS, "Broadway", 456);
+        Address address3 = new Address(City.LIEPAJA, "Park Avenue", 789);
+        Address address4 = new Address(City.JELGAVA, "Oak Street", 321);
+
+        // Create customer as person
+        CustomerAsPerson personCustomer1 = new CustomerAsPerson("John", "Doe", "PER001", address1, "+1234567890");
+        CustomerAsPerson personCustomer2 = new CustomerAsPerson("Alice", "Smith", "PER002", address2, "+0987654321");
+        CustomerAsPerson personCustomer3 = new CustomerAsPerson("Michael", "Johnson", "PER003", address3, "+1357924680");
+        CustomerAsPerson personCustomer4 = new CustomerAsPerson("Emily", "Brown", "PER004", address4, "+2468135790");
+        allCustomers.add(personCustomer1);
+        allCustomers.add(personCustomer2);
+        allCustomers.add(personCustomer3);
+        allCustomers.add(personCustomer4);
+
+        // Create customer as company
+        CustomerAsCompany companyCustomer1 = new CustomerAsCompany(address1, "+1234567890", "Company A", "COMP001");
+        CustomerAsCompany companyCustomer2 = new CustomerAsCompany(address2, "+0987654321", "Company B", "COMP002");
+        CustomerAsCompany companyCustomer3 = new CustomerAsCompany(address3, "+1357924680", "Company C", "COMP003");
+        CustomerAsCompany companyCustomer4 = new CustomerAsCompany(address4, "+2468135790", "Company D", "COMP004");
+        allCustomers.add(companyCustomer1);
+        allCustomers.add(companyCustomer2);
+        allCustomers.add(companyCustomer3);
+        allCustomers.add(companyCustomer4);
+
+        // Create parcels
+        Parcel parcel1 = new Parcel(LocalDateTime.now().plusDays(1), ParcelSize.M, false, driver1);
+        Parcel parcel2 = new Parcel(LocalDateTime.now().plusDays(2), ParcelSize.L, true, driver2);
+        Parcel parcel3 = new Parcel(LocalDateTime.now().plusDays(3), ParcelSize.S, false, driver3);
+        Parcel parcel4 = new Parcel(LocalDateTime.now().plusDays(4), ParcelSize.XL, false, driver4);
+
+        personCustomer1.addNewParcel(parcel1);
+        personCustomer2.addNewParcel(parcel2);
+        personCustomer3.addNewParcel(parcel3);
+        personCustomer4.addNewParcel(parcel4);
+
+        // Test the methods
+        findDriverByPersonCode("ABC123");
+        findDriverByPersonCode("XYZ999");
+        updateDriverLicenseNoByPersonCode("ABC123", "NEWLICENSE001");
+        updateDriverLicenseNoByPersonCode("XYZ999", "NEWLICENSE002");
+        updateDriverExperienceByPersonCode("ABC123", 4.0f);
+        updateDriverExperienceByPersonCode("XYZ999", 5.0f);
+        removeDriverByPersonCode("GHI012");
+        removeDriverByPersonCode("XYZ999");
+        retrieveAllCustomersAsCompany();
+        retrieveAllCustomersAsPerson();
+        retrieveAllParcelsByCustomerCode("PER001");
+        retrieveAllParcelsByDriverPersonCode("ABC123");
+        retrieveAllParcelsByCity(City.RIGA);
+        retrieveAllParcelsBySize(ParcelSize.M);
+        calculatePriceOfAllCustomerParcels("PER001");
+        retrieveStatisticsOfCustomerParcelsSize("PER001");
+        sortDriversByExperience();
+        calculateHowManyParcelsTodayDeliveredToSpecificCity(City.RIGA);
+        generateCustomerAsPersonAndParcel();
+        generateCustomerAsCompanyAndParcel();
+    }
+
 }
